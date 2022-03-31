@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreatePersonDto } from './dto/create-person.dto';
@@ -21,15 +21,23 @@ export class PeopleService {
     return this.personRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} person`;
+  async findOne(id: number) {
+    const person = await this.personRepository.findOneBy({ id });
+    if (!person) {
+      throw new NotFoundException(`Person #${id} not found`);
+    }
+    return person;
   }
 
   update(id: number, updatePersonDto: UpdatePersonDto) {
     return `This action updates a #${id} person`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} person`;
+  async remove(id: number) {
+    const person = await this.personRepository.findOneBy({ id });
+    if (!person) {
+      throw new NotFoundException(`Person #${id} not found`);
+    }
+    return this.personRepository.remove(person);
   }
 }
