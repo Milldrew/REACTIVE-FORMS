@@ -1,1 +1,8 @@
-<h1>hi check word longer</h1>
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <label for="first-name">First Name: </label>
+  <input id="firstName" type="text" formControlName="firstName" />
+  <br />
+  <label for="last-name">Last Name: </label>
+  <input id="lastName" type="text" formControlName="lastName" />
+  <p>complete the form to enable submit</p>
+</form>

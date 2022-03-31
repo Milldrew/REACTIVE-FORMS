@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-name-editor',
@@ -7,8 +7,19 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./name-editor.component.css'],
 })
 export class NameEditorComponent implements OnInit {
-  name = new FormControl('');
+  profileForm = new FormGroup({
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+  });
   constructor() {}
 
-  ngOnInit(): void {}
+  onSubmit() {
+    console.log('submit');
+  }
+  setValue() {
+    //    this.profileForm.firstName.setValue('Beast Mode');
+  }
+  ngOnInit(): void {
+    this.setValue();
+  }
 }
