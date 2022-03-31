@@ -1,5 +1,6 @@
 app-name-editor {
   border: 1px solid red;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  padding-top: 20px;
 }

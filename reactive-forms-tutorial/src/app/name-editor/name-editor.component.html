@@ -1,8 +1,10 @@
-<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit(profileForm.value)">
   <label for="first-name">First Name: </label>
   <input id="firstName" type="text" formControlName="firstName" />
   <br />
   <label for="last-name">Last Name: </label>
   <input id="lastName" type="text" formControlName="lastName" />
   <p>complete the form to enable submit</p>
+  <button type="submit" [disabled]="!profileForm.valid">SUBMIT</button>
 </form>
+{{ profileForm.value | json }}

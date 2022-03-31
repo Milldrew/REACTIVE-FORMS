@@ -8,13 +8,13 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class NameEditorComponent implements OnInit {
   profileForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
+    firstName: new FormControl('first'),
+    lastName: new FormControl('last'),
   });
   constructor() {}
 
-  onSubmit() {
-    console.log('submit');
+  onSubmit(profileFormValue: any) {
+    console.log(profileFormValue);
   }
   setValue() {
     //    this.profileForm.firstName.setValue('Beast Mode');
