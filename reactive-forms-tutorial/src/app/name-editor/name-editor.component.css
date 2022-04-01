@@ -6,3 +6,13 @@ input {
 label {
   text-align: left;
 }
+
+button {
+  background-color: #fff;
+}
+button:hover {
+  background-color: #f88;
+}
+button:active {
+  background-color: #ff8;
+}

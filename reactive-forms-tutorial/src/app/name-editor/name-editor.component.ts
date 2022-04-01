@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { CreateReadDeleteService } from '../services/create-read-delete.service';
+export type Person = {
+  firstName: string;
+  lastName: string;
+};
 
 @Component({
   selector: 'app-name-editor',
@@ -7,14 +12,17 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./name-editor.component.css'],
 })
 export class NameEditorComponent implements OnInit {
+  people: any[] = [];
   profileForm = new FormGroup({
     firstName: new FormControl('first'),
     lastName: new FormControl('last'),
   });
-  constructor() {}
+  constructor(public createReadDeleteService: CreateReadDeleteService) {}
 
-  onSubmit(profileFormValue: any) {
+  onSubmit(profileFormValue: any | never) {
     console.log(profileFormValue);
+    this.people.push(profileFormValue);
+    this.createReadDeleteService.createUser();
   }
   setValue() {
     //    this.profileForm.firstName.setValue('Beast Mode');

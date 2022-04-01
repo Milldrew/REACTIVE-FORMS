@@ -8,3 +8,4 @@
   <button type="submit" [disabled]="!profileForm.valid">SUBMIT</button>
 </form>
 {{ profileForm.value | json }}
+<app-people-list [personList]="people"> </app-people-list>
