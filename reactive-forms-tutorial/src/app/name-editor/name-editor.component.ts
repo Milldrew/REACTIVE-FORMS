@@ -22,12 +22,10 @@ export class NameEditorComponent implements OnInit {
   onSubmit(profileFormValue: any | never) {
     console.log(profileFormValue);
     this.people.push(profileFormValue);
-    this.createReadDeleteService.createUser();
-  }
-  setValue() {
-    //    this.profileForm.firstName.setValue('Beast Mode');
+    this.createReadDeleteService.createPerson();
   }
   ngOnInit(): void {
-    this.setValue();
+    let payload = this.createReadDeleteService.people;
+    console.log({ payload });
   }
 }
