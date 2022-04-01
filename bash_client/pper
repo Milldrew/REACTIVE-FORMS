@@ -1,0 +1,2 @@
+curl -d '{"firstName": "foo", "lastName": "bar"}' -H "Content-Type: application/json" 'http://localhost:3000/people/'$1
+
