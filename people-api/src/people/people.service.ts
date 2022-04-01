@@ -34,6 +34,7 @@ export class PeopleService {
   }
 
   async remove(id: number) {
+    console.log('remove');
     const person = await this.personRepository.findOneBy({ id });
     if (!person) {
       throw new NotFoundException(`Person #${id} not found`);
