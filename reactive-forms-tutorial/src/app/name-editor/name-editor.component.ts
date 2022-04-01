@@ -22,7 +22,11 @@ export class NameEditorComponent implements OnInit {
   onSubmit(profileFormValue: any | never) {
     console.log(profileFormValue);
     this.people.push(profileFormValue);
-    this.createReadDeleteService.createPerson();
+    this.createReadDeleteService.createPerson$();
+    let payload = this.createReadDeleteService.getPeople$();
+    payload.subscribe((value: any) =>
+      console.log({ value }, (this.people = value))
+    );
   }
 
   ngOnAfterContentChecked() {}
