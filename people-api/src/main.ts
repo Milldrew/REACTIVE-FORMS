@@ -14,6 +14,7 @@ async function bootstrap() {
       },
     }),
   );
+  app.enableCors();
   await app.listen(3000);
   console.log(3000);
 }

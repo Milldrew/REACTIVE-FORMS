@@ -8,12 +8,9 @@ import { catchError, of, tap } from 'rxjs';
 export class CreateReadDeleteService {
   constructor(private http: HttpClient) {}
 
-  createPerson$() {
+  createPerson$(person: any) {
     const payload = this.http
-      .post('http://192.168.0.143:3000/people', {
-        firstName: 'from',
-        lastName: 'service',
-      })
+      .post('http://192.168.0.143:3000/people', person)
       .pipe(tap((person) => console.log(person)));
     payload.subscribe((data) => console.log({ data }));
     console.log({ payload });
