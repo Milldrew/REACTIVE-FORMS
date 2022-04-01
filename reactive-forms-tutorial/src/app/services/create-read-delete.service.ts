@@ -6,12 +6,17 @@ import { catchError, of, tap } from 'rxjs';
   providedIn: 'root',
 })
 export class CreateReadDeleteService {
-  people: any;
   constructor(private http: HttpClient) {}
-  createPerson() {
-    this.http
-      .get('http://192.168.0.143:3000/people')
-      .subscribe((value) => (this.people = value));
+
+  createPerson$() {
+    const payload = this.http
+      .post('http://192.168.0.143:3000/people', {
+        firstName: 'from',
+        lastName: 'service',
+      })
+      .pipe(tap((person) => console.log(person)));
+    payload.subscribe((data) => console.log({ data }));
+    console.log({ payload });
   }
   getPeople$() {
     const payload$ = this.http.get('http://192.168.0.143:3000/people').pipe(
