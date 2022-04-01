@@ -25,4 +25,9 @@ export class CreateReadDeleteService {
     );
     return payload$;
   }
+  deletePerson(id: number) {
+    let url = `http://192.168.0.143:3000/people/${id}`;
+    console.log(url);
+    return this.http.delete(url).pipe(tap((value) => console.log({ value })));
+  }
 }
