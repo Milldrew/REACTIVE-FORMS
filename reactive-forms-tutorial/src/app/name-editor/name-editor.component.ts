@@ -24,8 +24,12 @@ export class NameEditorComponent implements OnInit {
     this.people.push(profileFormValue);
     this.createReadDeleteService.createPerson();
   }
+
+  ngOnAfterContentChecked() {}
   ngOnInit(): void {
-    let payload = this.createReadDeleteService.people;
-    console.log({ payload });
+    let payload = this.createReadDeleteService.getPeople$();
+    payload.subscribe((value: any) =>
+      console.log({ value }, (this.people = value))
+    );
   }
 }
