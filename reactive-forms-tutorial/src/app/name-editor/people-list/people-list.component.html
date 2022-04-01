@@ -1,6 +1,7 @@
 <h1>From list</h1>
 <ul *ngIf="hasPerson()">
   <li *ngFor="let person of personList">
-    {{ person.firstName }} {{ person.lastName }}
+    <div>Full Name: {{ person.firstName }} {{ person.lastName }}</div>
+    <div (click)="deletePerson(person.id)">🗑</div>
   </li>
 </ul>
